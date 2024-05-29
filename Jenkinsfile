@@ -17,5 +17,12 @@ pipeline {
                 bat "mvn --batch-mode package"
             }
         }
+
+        stage('Test') {
+            steps {
+                echo "Running tests..."
+                bat "junit '**/target/surefire-reports/*.xml'"
+            }
+        }
     }
 }
