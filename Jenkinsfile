@@ -21,7 +21,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "Running tests..."
-                bat "junit '**/target/surefire-reports/*.xml'"
+                junit '**/target/surefire-reports/*.xml'
             }
         }
     }
