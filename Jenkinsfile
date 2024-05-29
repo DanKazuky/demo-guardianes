@@ -1,11 +1,20 @@
 pipeline {
     agent any
- 
+    tools {
+        maven 'Maven 3.9.7'
+    }
     stages {
         stage('Checkout') {
             steps {
                 // Checkout the repository from GitHub
                 git url: 'https://github.com/DanKazuky/demo-guardianes.git', branch: 'main', credentialsId: 'conexion-github'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Build commands
+                sh 'mvn clean install'
             }
         }
     }
