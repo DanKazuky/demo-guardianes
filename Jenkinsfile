@@ -13,8 +13,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Build commands
-                sh 'mvn clean install'
+                echo 'Build'
+                bat "mvn --batch-mode package"
             }
         }
     }
