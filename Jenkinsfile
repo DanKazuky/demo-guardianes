@@ -24,16 +24,19 @@ pipeline {
                 junit '**/target/surefire-reports/*.xml'
             }
         }
+
         stage('SonarQube Analysis') {
-            withSonarQubeEnv() {
-                bat "${maven}/bin/mvn clean verify sonar:sonar " +
-                            " -Dsonar.projectKey=PGSPOR-PORVENIRGUARD" +
-							' -Dsonar.language=java' +
-							' -Dsonar.java.binaries="."' +
-							' -Dsonar.sourceEncoding=UTF8' +
-							" -Dsonar.exclusions=**/test/**/*.*" +
-                            ' -Dsonar.host.url=https://umanepre.emeal.nttdata.com/sonarqubece/' +
-                            " -Dsonar.login=sqp_d3cbe9e7615d2bda861e3568310f752c02a9a88a"
+            steps {
+                withSonarQubeEnv() {
+                    bat "${maven}/bin/mvn clean verify sonar:sonar " +
+                                " -Dsonar.projectKey=PGSPOR-PORVENIRGUARD" +
+                                ' -Dsonar.language=java' +
+                                ' -Dsonar.java.binaries="."' +
+                                ' -Dsonar.sourceEncoding=UTF8' +
+                                " -Dsonar.exclusions=**/test/**/*.*" +
+                                ' -Dsonar.host.url=https://umanepre.emeal.nttdata.com/sonarqubece/' +
+                                " -Dsonar.login=sqp_d3cbe9e7615d2bda861e3568310f752c02a9a88a"
+                }
             }
         }
     }
