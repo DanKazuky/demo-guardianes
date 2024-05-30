@@ -27,7 +27,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarQube 5 Community') {
+                withSonarQubeEnv('SonarQube_5') {
                     bat "${maven}/bin/mvn clean verify sonar:sonar " +
                                 " -Dsonar.projectKey=PGSPOR-PORVENIRGUARD" +
                                 ' -Dsonar.language=java' +
